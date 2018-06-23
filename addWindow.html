@@ -1,0 +1,25 @@
+<html lang="en">
+
+<head>
+    <title>addWindow</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="item">
+        <button type="submit">submit</button>
+    </form>
+</body>
+<script>
+    const electron = require('electron')
+    const { ipcRenderer } = electron
+
+    document
+        .querySelector('#form')
+        .addEventListener('submit', (e) => {
+            e.preventDefault()
+            ipcRenderer.send('item:add', document.querySelector('#item').value)
+        })
+</script>
+
+</html>
